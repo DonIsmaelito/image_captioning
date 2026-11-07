@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-captioning"
+version = "0.1.0"
+description = "A readable Transformer for image captioning with precomputed COCO features"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.5,<3",
+    "numpy>=1.26,<3",
+    "h5py>=3.11,<4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+caption-train = "captioning.train:main"
+caption-predict = "captioning.predict:main"
+caption-prepare-data = "captioning.prepare_data:main"
+
+[tool.setuptools.packages.find]
+include = ["captioning*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
